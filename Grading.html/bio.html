@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sesero - Biography</title>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0%;
+                padding: 20px;
+            }
+
+            h1{
+                color: aqua;
+                margin-bottom: 10px;
+
+            }
+
+            p{
+                color: blue;
+                margin-bottom: 20px;
+            }
+
+    </style>
+    </head>
+    <body>
+        <h1>Sesero -Biography</h1>
+
+        <p id="bio">Loading Biography...</p>
+        <script>
+            window.addEventListener('DOMContentLoaded' ,function() {
+                fetch('https://api.example.com/biography/Sesero')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('bio').textContent = data;})
+                    .catch(error => {
+                        console.error('Error fetching biography:', error);
+                        document.getElementById('bio').textContent ='Failed to fetch the biography.';
+                    });
+                });
+                </script>
+    </body>
+</html>
