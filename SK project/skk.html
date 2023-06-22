@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll comments</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        * {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: green;
+}
+.container {
+  position: absolute;
+  left: 550px;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  width: 300px;
+  color: black;
+  background: rgb(245, 240, 240);
+  padding: 20px;
+  border-radius: 0.75rem;
+}
+.hidden {
+  display: none;
+}
+#pic {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+.butons {
+  position: absolute;
+  left: 650px;
+  top: 550px;
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+  color: red;
+  background: green;
+  align-items: center;
+}
+button {
+  font-size: 30px;
+  border: none;
+  font-weight: bolder;
+}
+button:hover {
+  font-size: 30px;
+  background: rgb(47, 78, 255);
+  color: rgb(120, 180, 233);
+}
+    </style>
+    <title>Welcome to Sk project</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="name">Sem Seronei</h1>
+      <img src="pic-1.png" id="pic" />
+      <p id="text">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
+        consequatur officia error iusto, hic aperiam quisquam voluptatibus quos
+        rem eveniet pariatur adipisci facere quo architecto nihil nostrum?
+        Possimus, corporis dicta.
+      </p>
+    </div>
+
+    <div class="butons">
+      <button class="left"><</button>
+      <button class="random">random</button>
+      <button class="right">></button>
+    </div>
+    <script src="app.js"></script>
+    <script>
+        const reviews = [
+  {
+    id: 1,
+    name: "Sesero",
+    pic: "IMG_20221030_181055_327",
+    text: "I love doing what inspires me and what is good for all of us and most of all help the community around",
+  },
+  {
+    id: 2,
+    name: "Kim",
+    pic: "IMG_20220529_065127_908",
+    text: "I am a proficient javascript developer specialized in react js and can do all fullstack roles of a javascript developer",
+  },
+  {
+    id: 3,
+    name: "Koech",
+    pic: "img_1677117395042",
+    text: "Coding is not hard but will become hard if you believe that",
+  },
+  {
+    id: 4,
+    name: "Jane",
+    pic: "IMG_20211205_102046_046_transcpr",
+    text: "I know Koech well and recommend him for this job, he is the best fit you can find for the post ",
+  },
+  {
+    id: 5,
+    name: "Kimutai",
+    pic: "pic-6.png",
+    text: "you should hire the guy right away",
+  },
+  {
+    id: 6,
+    name: "Maximos",
+    pic: "pic-7.png",
+    text: "I'll work with guy in my team and sea how about it as he seems very experienced and professional",
+  },
+];
+//const container = document.querySelectorAll(".container");
+const nam = document.getElementById("name");
+const pic = document.getElementById("pic");
+const text = document.getElementById("text");
+const btnLeft = document.querySelector(".left");
+const btnRight = document.querySelector(".right");
+const random = document.querySelector(".random");
+
+//setting initial start item
+let current = 0;
+
+//function to show content after DOM loads
+const showReview = function () {
+  const item = reviews[current];
+  // test console.log(item.name);
+
+  pic.src = item.pic;
+  nam.textContent = item.name;
+  text.textContent = item.text;
+};
+
+//implementing right button
+btnRight.addEventListener("click", function () {
+  current = current + 1;
+  if (current > reviews.length) {
+    current = 0;
+  }
+
+  showReview();
+});
+btnLeft.addEventListener("click", function () {
+  current = current - 1;
+  if (current === 0) {
+    current = reviews.length;
+  }
+  showReview();
+});
+random.addEventListener("click", function () {
+  //generating random number
+  let randomNumber = Math.trunc(Math.random() * reviews.length) + 1;
+  //console.log(randomNumber);
+  current = randomNumber;
+  console.log(current);
+  showReview();
+});
+
+    </script>
+    
+  </body>
+</html>
